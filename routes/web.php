@@ -1,12 +1,25 @@
 <?php
 
-use App\Http\Controllers\BeritaController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BeritaController;
 
 // Route::get('/', function () {
 //     return view('index');
 // });
+Route::get('/bpd', function () {
+    return view('bpd');
+});
+Route::get('/karangtaruna', function () {
+    return view('karangtaruna');
+});
+Route::get('/bumdes', function () {
+    return view('bumdes');
+});
+Route::get('/struktur', function () {
+    return view('struktur');
+});
 
 Auth::routes();
 

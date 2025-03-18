@@ -43,7 +43,7 @@
             <div style="margin-top: 10px;">
             <a href="/masuk/{{$item->id}}" class="btn btn-primary">Lihat</a>
             <a href="/edit/{{$item->id}}" class="btn btn-success">Edit</a>
-            <form action="{{ route('home.destroy', $item->id) }}" method="POST"">
+            <form action="{{ route('home.destroy', $item->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Hapus</button>

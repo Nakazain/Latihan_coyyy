@@ -33,6 +33,17 @@ class HomeController extends Controller
         return view('add');
     }
 
+    
+    public function edit($id) {
+        $data = Berita::findOrFail($id);
+        return view('edit', compact('data'));
+    }
+    
+    public function masuk($id) {
+        $data = Berita::findOrFail($id);
+        return view('masuk', compact('data'));
+    }
+
     public function input(Request $request){
         $image = $request->file('gambar')->store('berita', 'public');
 
@@ -44,17 +55,7 @@ class HomeController extends Controller
         
         return redirect('home');
     }
-
-    public function edit($id) {
-        $data = Berita::findOrFail($id);
-        return view('edit', compact('data'));
-    }
     
-    public function masuk($id) {
-        $data = Berita::findOrFail($id);
-        return view('masuk', compact('data'));
-    }
-
     public function update(Request $request, $id){
         $data = Berita::findOrFail($id);
     
@@ -62,12 +63,12 @@ class HomeController extends Controller
             Storage::delete('public/' . $data->gambar);
             $data->gambar = $request->file('gambar')->store('berita', 'public');
         }
-    
+        
         $data->update([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
         ]);
-    
+        
         return redirect()->route('home');
     }
 
@@ -80,7 +81,7 @@ class HomeController extends Controller
 
         $data->delete();
 
-        return redirect()->route('home')->with('success', 'Berita berhasil dihapus');
+        return redirect()->route('home');
     }
 
     }
